@@ -7,6 +7,16 @@
 - Steps to run the program: 
 
 ```bash 
+cd Section1
 g++ qn1.cpp -o qn1
+./qn1 input.txt output.txt 
+```
+## Section 2: Program to take a grammar as input and produce equivalent left-factored grammar as output
+
+- Steps to run the program: 
+
+```bash 
+cd Section2
+g++ qn2.cpp -o qn2
 ./qn1 input.txt output.txt 
 ```
