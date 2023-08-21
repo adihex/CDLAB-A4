@@ -20,3 +20,12 @@ cd Section2
 g++ qn2.cpp -o qn2
 ./qn1 input.txt output.txt 
 ```
+
+## Section 3: Program to implement a top-down parser
+- Steps to run the program: 
+
+```bash 
+cd Section2
+g++ qn2.cpp -o qn2
+./qn1 input.txt output.txt 
+```
