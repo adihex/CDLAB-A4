@@ -1,5 +1,1 @@
-R -> rrrs | rrrt | rrtr | rrtc | rrrr | srt | srr
-A -> aAB | aBc | aAc
-A -> c
-X -> aaab | aab
-X -> abb
+A -> aAB | aBc| aAc

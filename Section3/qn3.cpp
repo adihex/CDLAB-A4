@@ -5,26 +5,21 @@ using namespace std;
 // - For question 3,  implement a basic top-down parser for the given grammar
 // using the recursive-descent parsing approach discussed in the class
 /*
-E  -> TE'
-E' -> +TE'|epsilon
-T -> FT'
-T' -> *FT' | epsilon
-F -> (E) | i        // Here i denotes id
+S -> n B
+B -> n B A B | ε
+A -> + | ×
 
 Let us model the same grammar by the following transformation: (used for
-simplifying the recursion) E -> 0, E' -> 1, T -> 2, T'-> 3, F -> 4
+simplifying the recursion) S -> 0, B -> 1, A -> 2
 
 The updated grammar would be:
-0 -> 21
-1 -> +21 | epsilon
-2 -> 43
-3 -> *43 | epsilon
-4 -> (0) | i
+0 -> n1
+1 -> n121 | epsilon
+2 -> + | x
 */
 
 // Global Data Structure: Representing the current grammar:
-vector<vector<string>> transition{
-    {"21"}, {"+21", ""}, {"43"}, {"*43", ""}, {"(0)", "i"}};
+vector<vector<string>> transition{{"n1"}, {"n121", ""}, {"+", "x"}};
 // For reverse translation:
 unordered_map<int, string> um;
 
@@ -68,16 +63,13 @@ bool parser(int i, string &s, string &target, int j, vector<string> &sequence,
 
 int main() {
   // These two lines redirects inputs and outputs from/to file:
-  ifstream cin("input3.txt");
-  // ofstream cout("output.txt")
+  ifstream cin("input.txt");
+  ofstream cout("output.txt");
 
   // This is for reverse translation:
-  um[0] = "E";
-  um[1] = "E'";
-  um[2] = "T";
-  um[3] = "T'";
-  um[4] = "F";
-  um[5] = "i";
+  um[0] = "S";
+  um[1] = "B";
+  um[2] = "A";
 
   // Getting the input:
   string target, s = "0";

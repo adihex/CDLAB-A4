@@ -109,29 +109,23 @@ void parseAndInsert(string &str) {
     exit(-1);
   }
   int index = str[0];
-  if (str[str.length() - 1] != '|')
-    str += '|';
-  int i = 3;
-  if (i >= str.length()) {
-    cout << "ERROR: Illegal format";
-    return;
+  int arrowPos = str.find("->");
+  if (arrowPos == string::npos) {
+    cout << "ERROR: Arrow (->) missing in grammar rule";
+    exit(-1);
   }
-  string curr;
-  while (i < str.length()) {
-    if (str[i] == '|') {
-      adj[index].push_back(curr);
-      curr = "";
-    } else
-      curr += str[i];
-    i++;
+  string production = str.substr(arrowPos + 2);
+  stringstream ss(production);
+  string rule;
+  while (getline(ss, rule, '|')) {
+    adj[index].push_back(rule);
   }
-  return;
 }
 
 int main() {
 
   // These two lines redirects inputs and outputs from/to file:
-  ifstream cin("input2.txt");
+  ifstream cin("input.txt");
   // ofstream cout("output.txt")
 
   // Get the input grammar and store it in the global data structure;
