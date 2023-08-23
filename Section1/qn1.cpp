@@ -72,7 +72,8 @@ void parse(string &str) {
   return;
 }
 
-void printGrammar() {
+void printGrammar(char* output) {
+  ofstream cout(output);
   for (int i = 0; i < globalData.size(); i++) {
     if (globalData[i].size() == 0)
       continue;
@@ -104,9 +105,7 @@ grammar concatenateOp(list<int> &elem, grammar &currGrammar) {
 
 int main(int argc, char *argv[]) {
   ifstream inFile;
-  ofstream outFile;
   inFile.open(argv[1]);
-  outFile.open(argv[2]);
   string line;
   vector<string> input;
   while (getline(inFile, line)) {
@@ -161,9 +160,9 @@ int main(int argc, char *argv[]) {
     }
     globalData[i] = newResultantGrammar;
   }
-  printGrammar();
+  printGrammar(argv[2]);
 
   inFile.close();
-  outFile.close();
+  // outFile.close();
   return 0;
 }
